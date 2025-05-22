@@ -1,0 +1,45 @@
+/* Pop-ups (CSS-only) */
+.custom-popup {
+    position: fixed;
+    top: 20px;
+    right: -300px;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    animation: slideAndFade 4s forwards;
+    z-index: 1000;
+}
+
+.custom-popup.success {
+    background-color: #2ecc71;
+}
+
+.custom-popup.error {
+    background-color: #e74c3c;
+}
+
+.custom-popup.info {
+    background-color: #3498db;
+}
+
+@keyframes slideAndFade {
+    0% {
+        right: -300px;
+        opacity: 0;
+    }
+    15% {
+        right: 20px;
+        opacity: 1;
+    }
+    85% {
+        right: 20px;
+        opacity: 1;
+    }
+    100% {
+        right: -300px;
+        opacity: 0;
+    }
+}

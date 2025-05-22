@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+</head>
+<body>
+    {% extends "base.html" %}
+<!-- Extende o layout base.html, que contém a estrutura principal do site -->
+
+{% block title %}Produtos{% endblock %}
+<!-- Define o título da página como "Produtos" -->
+
+{% block content %}
+<!-- Início do bloco de conteúdo principal da página -->
+
+    <section class="products">
+        <!-- Seção para exibir os produtos disponíveis -->
+        <h2>Nossos Produtos</h2>
+        <!-- Título da seção -->
+
+        <div class="product-grid">
+            <!-- Container para organizar os produtos em um grid -->
+
+            {% for produto in produtos %}
+            <!-- Loop para iterar sobre a lista de produtos passada pelo backend -->
+
+                <div class="product-card">
+                    <!-- Card individual para cada produto -->
+                    <h3>{{ produto.nome }}</h3>
+                    <!-- Exibe o nome do produto -->
+
+                    <p>R$ {{ "%.2f"|format(produto.preco) }}</p>
+                    <!-- Exibe o preço do produto formatado com duas casas decimais -->
+
+                    <a href="{{ url_for('adicionar_carrinho', produto_id=produto.id) }}" class="btn-add">
+                        <!-- Link para adicionar o produto ao carrinho, chamando a rota 'adicionar_carrinho' com o ID do produto -->
+                        Adicionar ao Carrinho
+                    </a>
+                </div>
+
+            {% endfor %}
+            <!-- Fim do loop de produtos -->
+
+        </div>
+        <!-- Fim do container de grid de produtos -->
+
+    </section>
+    <!-- Fim da seção de produtos -->
+
+{% endblock %}
+<!-- Fim do bloco de conteúdo principal -->
+</body>
+</html>
+

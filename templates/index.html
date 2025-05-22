@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Inicial</title>
+</head>
+<body>
+    {% extends "base.html" %}
+<!-- Extende o layout base.html, que contém a estrutura principal do site -->
+
+{% block title %}Página Inicial{% endblock %}
+<!-- Define o título da página como "Página Inicial" -->
+
+{% block content %}
+<!-- Início do bloco de conteúdo principal da página -->
+
+    <section class="welcome">
+        <!-- Seção de boas-vindas na página inicial -->
+
+        {% if username %}
+            <!-- Verifica se o usuário está logado (variável 'username' está definida) -->
+            <h2>Bem-vindo de volta, {{ username }}!</h2>
+            <!-- Exibe uma mensagem personalizada de boas-vindas com o nome do usuário -->
+            <p>Navegue pelos nossos produtos e adicione itens ao seu carrinho.</p>
+            <!-- Mensagem incentivando o usuário a explorar os produtos -->
+        {% else %}
+            <!-- Caso o usuário não esteja logado -->
+            <h2>Bem-vindo ao nosso sistema de compras!</h2>
+            <!-- Mensagem de boas-vindas genérica -->
+            <p>Faça login ou cadastre-se para começar a comprar.</p>
+            <!-- Mensagem incentivando o usuário a fazer login ou se cadastrar -->
+        {% endif %}
+    </section>
+    <!-- Fim da seção de boas-vindas -->
+
+{% endblock %}
+<!-- Fim do bloco de conteúdo principal -->
+</body>
+</html>

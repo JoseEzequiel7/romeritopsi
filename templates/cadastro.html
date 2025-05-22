@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+<body>
+    {% extends "base.html" %}
+<!-- Extende o layout base.html, que contém a estrutura principal do site -->
+
+{% block title %}Cadastro{% endblock %}
+<!-- Define o título da página como "Cadastro" -->
+
+{% block content %}
+<!-- Início do bloco de conteúdo principal da página -->
+
+    <section class="auth-form">
+        <!-- Seção para o formulário de cadastro -->
+
+        <h2>Cadastro</h2>
+        <!-- Título da seção -->
+
+        {% if error %}
+            <!-- Verifica se há uma mensagem de erro passada pelo backend -->
+            <p class="error">{{ error }}</p>
+            <!-- Exibe a mensagem de erro, se existir -->
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('cadastro') }}">
+            <!-- Formulário de cadastro que envia os dados via método POST para a rota 'cadastro' -->
+
+            <div class="form-group">
+                <!-- Grupo de formulário para o campo de usuário -->
+                <label for="username">Usuário:</label>
+                <!-- Rótulo para o campo de entrada do nome de usuário -->
+                <input type="text" id="username" name="username" required>
+                <!-- Campo de entrada para o nome de usuário, obrigatório -->
+            </div>
+
+            <div class="form-group">
+                <!-- Grupo de formulário para o campo de senha -->
+                <label for="password">Senha:</label>
+                <!-- Rótulo para o campo de entrada da senha -->
+                <input type="password" id="password" name="password" required>
+                <!-- Campo de entrada para a senha, obrigatório -->
+            </div>
+
+            <button type="submit">Cadastrar</button>
+            <!-- Botão para enviar o formulário -->
+        </form>
+
+        <p>Já tem uma conta? <a href="{{ url_for('login') }}">Faça login</a></p>
+        <!-- Link para a página de login, caso o usuário já tenha uma conta -->
+    </section>
+    <!-- Fim da seção de formulário de cadastro -->
+
+{% endblock %}
+<!-- Fim do bloco de conteúdo principal -->
+</body>
+</html>

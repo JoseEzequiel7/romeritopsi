@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho</title>
+</head>
+<body>
+    {% extends "base.html" %}
+<!-- Extende o layout base.html, que contém a estrutura principal do site -->
+
+{% block title %}Carrinho{% endblock %}
+<!-- Define o título da página como "Carrinho" -->
+
+{% block content %}
+<!-- Início do bloco de conteúdo principal da página -->
+
+    <section class="cart">
+        <!-- Seção para exibir os itens do carrinho -->
+
+        <h2>Seu Carrinho</h2>
+        <!-- Título da seção -->
+
+        {% if carrinho %}
+            <!-- Verifica se o carrinho contém itens -->
+
+            <table>
+                <!-- Tabela para listar os itens do carrinho -->
+
+                <thead>
+                    <!-- Cabeçalho da tabela -->
+                    <tr>
+                        <th>Produto</th>
+                        <!-- Coluna para o nome do produto -->
+                        <th>Preço</th>
+                        <!-- Coluna para o preço do produto -->
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <!-- Corpo da tabela contendo os itens do carrinho -->
+                    {% for item in carrinho %}
+                        <!-- Loop para iterar sobre os itens do carrinho -->
+                        <tr>
+                            <td>{{ item.nome }}</td>
+                            <!-- Exibe o nome do produto -->
+                            <td>R$ {{ "%.2f"|format(item.preco) }}</td>
+                            <!-- Exibe o preço do produto formatado com duas casas decimais -->
+                        </tr>
+                    {% endfor %}
+                    <!-- Fim do loop de itens do carrinho -->
+                </tbody>
+
+                <tfoot>
+                    <!-- Rodapé da tabela -->
+                    <tr>
+                        <th>Total:</th>
+                        <!-- Coluna indicando o total -->
+                        <th>R$ {{ "%.2f"|format(total) }}</th>
+                        <!-- Exibe o valor total do carrinho formatado com duas casas decimais -->
+                    </tr>
+                </tfoot>
+            </table>
+
+        {% else %}
+            <!-- Caso o carrinho esteja vazio -->
+            <p>Seu carrinho está vazio.</p>
+            <!-- Mensagem informando que não há itens no carrinho -->
+        {% endif %}
+    </section>
+    <!-- Fim da seção do carrinho -->
+
+{% endblock %}
+<!-- Fim do bloco de conteúdo principal -->
+</body>
+</html>
